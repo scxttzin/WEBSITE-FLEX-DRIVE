@@ -835,7 +835,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
     <li><button id="tab-sobre"   onclick="goTo('sobre')"               >Sobre Nós</button></li>
   </ul>
 
-  <button class="nav-cta" onclick="goTo('alugue')">Reserve agora</button>
+  <button class="nav-cta" onclick="goTo('alugue')">Alugar agora</button>
 
   <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -847,7 +847,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
     <button onclick="goToMobile('charge')">Flex Charge</button>
     <button onclick="goToMobile('cursos')">Cursos</button>
     <button onclick="goToMobile('sobre')">Sobre Nós</button>
-    <button class="mobile-cta" onclick="goToMobile('alugue')">Reserve agora</button>
+    <button class="mobile-cta" onclick="goToMobile('alugue')">Alugar agora</button>
   </div>
 </nav>
 
@@ -875,8 +875,8 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
 
         <div class="hero-anim-mobile" style="display:none; margin:1.5rem 0;"><div id="lottie-hero-mobile" style="width:100%; max-width:320px; height:auto; min-height:200px; margin:0 auto;"></div></div>
         <div class="hero-ctas">
-          <button class="btn btn-blue" onclick="goTo('alugue')">Quero alugar →</button>
-          <button class="btn btn-glass" onclick="goTo('charge')" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.85); color:var(--gray-1); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.07);">Ver Flex Charge</button>
+          <button class="btn btn-blue" onclick="goTo('alugue')">Ver Veículos →</button>
+          <button class="btn btn-glass" onclick="goTo('charge')" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.85); color:var(--gray-1); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.07);">Ver Estações</button>
           <button class="btn btn-glass" onclick="goTo('sobre')" style="background:rgba(255,255,255,0.55); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.85); color:var(--gray-1); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(0,0,0,0.07);">Sobre Nós</button>
         </div>
       </div>
@@ -904,7 +904,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
         <div class="stat-label">Frota elétrica</div>
       </div>
       <div class="metric-item reveal">
-        <div class="stat-num">+<span class="counter" data-target="12" data-prefix="+">0</span></div>
+        <div class="stat-num" style="color:var(--blue);">+<span class="counter" data-target="12" data-prefix="+">0</span></div>
         <div class="stat-label">Veículos em frota</div>
       </div>
       <div class="metric-item reveal">
@@ -985,10 +985,14 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
           <div style="display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.6rem; margin-bottom:1rem;">
             <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Elétrico</span>
             <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Automático</span>
-            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">405 km</span>
+            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Km Livre</span>
+            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Segurado</span>
+            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Higienizado</span>
             <span style="padding:.3rem .7rem; background:#EF4444; border-radius:var(--radius-pill); font-size:.72rem; color:#fff; font-weight:600;">Indisponível</span>
           </div>
-          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Semanal: R$1.500</span></div>
+          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Valor em Caução: R$2.500</span></div>
+          <div style="margin:.6rem 0; height:1px; background:var(--gray-6);"></div>
+          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Valor do Semanal: R$1.500</span></div>
           <a href="#form-reserva" onclick="document.getElementById('form-reserva').scrollIntoView({behavior:'smooth'})" style="display:inline-block; margin-top:.8rem; padding:.7rem 1.8rem; background:#16A34A; color:#fff; border-radius:var(--radius-pill); font-family:'Inter',sans-serif; font-size:.88rem; font-weight:600; text-decoration:none; cursor:pointer; box-shadow:0 4px 16px rgba(22,163,74,0.25); transition:all .25s;" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16A34A'">Alugar</a>
         </div>
 
@@ -1003,9 +1007,13 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
             <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Flex</span>
             <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Manual</span>
             <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Km Livre</span>
+            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Segurado</span>
+            <span style="padding:.3rem .7rem; border:1px solid var(--gray-5); border-radius:var(--radius-pill); font-size:.72rem; color:var(--gray-3);">Higienizado</span>
             <span style="padding:.3rem .7rem; background:#EF4444; border-radius:var(--radius-pill); font-size:.72rem; color:#fff; font-weight:600;">Indisponível</span>
           </div>
-          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Semanal: R$700</span></div>
+          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Valor em Caução: R$1.600</span></div>
+          <div style="margin:.6rem 0; height:1px; background:var(--gray-6);"></div>
+          <div><span style="font-size:1.6rem; font-weight:700; color:var(--gray-1); letter-spacing:-.03em;">Valor do Semanal: R$700</span></div>
           <a href="#form-reserva" onclick="document.getElementById('form-reserva').scrollIntoView({behavior:'smooth'})" style="display:inline-block; margin-top:.8rem; padding:.7rem 1.8rem; background:#16A34A; color:#fff; border-radius:var(--radius-pill); font-family:'Inter',sans-serif; font-size:.88rem; font-weight:600; text-decoration:none; cursor:pointer; box-shadow:0 4px 16px rgba(22,163,74,0.25); transition:all .25s;" onmouseover="this.style.background='#15803d'" onmouseout="this.style.background='#16A34A'">Alugar</a>
         </div>
       </div>
@@ -1128,7 +1136,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
       <div class="grid-4">
         <div class="glass feat-card reveal" style="border-radius:var(--radius-md); padding:1.5rem;">
           <div class="feat-icon" style="width:42px;height:42px;font-size:1.1rem;margin-bottom:1rem;">📍</div>
-          <h3 style="font-size:1rem;">Localização única</h3>
+          <h3 style="font-size:1rem;">Localização</h3>
           <p class="body-sm" style="margin-top:.4rem;">2 Eletropostos em Brasília</p>
         </div>
         <div class="glass feat-card reveal" style="border-radius:var(--radius-md); padding:1.5rem;">
@@ -1163,7 +1171,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
               onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--gray-5)'"
               oninput="calcEconomia()">
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1.5rem;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.2rem; margin-top:1.5rem;">
 
               <!-- Gasolina -->
               <div style="background:rgba(239,68,68,0.06); border-radius:var(--radius-sm); padding:1.2rem; text-align:center;">
@@ -1182,18 +1190,35 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
                 <div id="calc-elec" style="font-size:1.6rem; font-weight:700; color:var(--blue); letter-spacing:-.03em;">R$ 537,94</div>
                 <div style="font-size:.72rem; color:var(--gray-4); margin-top:.2rem;">/mês</div>
               </div>
+
+              <!-- Parceiro Flex -->
+              <div style="background:rgba(22,163,74,0.06); border-radius:var(--radius-sm); padding:1.2rem; text-align:center; border:1px solid rgba(22,163,74,0.15);">
+                <div style="font-size:1.5rem; margin-bottom:.4rem;">🤝</div>
+                <div style="font-size:.72rem; font-weight:600; color:#16A34A; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.6rem;">Parceiro Flex</div>
+                <div style="font-size:.75rem; color:var(--gray-3); margin-bottom:.2rem;">R$ 1,75/kWh · ~5,3 km/kWh</div>
+                <div id="calc-flex" style="font-size:1.6rem; font-weight:700; color:#16A34A; letter-spacing:-.03em;">R$ 495,94</div>
+                <div style="font-size:.72rem; color:var(--gray-4); margin-top:.2rem;">/mês</div>
+              </div>
             </div>
 
             <!-- Resultado -->
-            <div style="margin-top:1.5rem; background:linear-gradient(135deg, rgba(22,163,74,0.08), rgba(34,197,94,0.06)); border-radius:var(--radius-sm); padding:1.2rem; text-align:center;">
-              <div style="font-size:.72rem; font-weight:600; color:var(--gray-4); letter-spacing:.08em; text-transform:uppercase; margin-bottom:.4rem;">Sua economia mensal</div>
-              <div id="calc-save" style="font-size:2rem; font-weight:700; color:#16A34A; letter-spacing:-.03em;">R$ 437,06</div>
-              <div id="calc-pct" style="font-size:.85rem; color:var(--gray-3); margin-top:.3rem;">Você economiza 45% com elétrico</div>
-              <div id="calc-year" style="font-size:.8rem; font-weight:600; color:#16A34A; margin-top:.5rem;">R$ 5.244,75 por ano</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+              <div style="background:linear-gradient(135deg, rgba(37,99,235,0.08), rgba(79,142,247,0.06)); border-radius:var(--radius-sm); padding:1.2rem; text-align:center;">
+                <div style="font-size:.72rem; font-weight:600; color:var(--gray-4); letter-spacing:.08em; text-transform:uppercase; margin-bottom:.4rem;">Economia Elétrico vs Gasolina</div>
+                <div id="calc-save" style="font-size:1.8rem; font-weight:700; color:var(--blue); letter-spacing:-.03em;">R$ 437,06</div>
+                <div id="calc-pct" style="font-size:.8rem; color:var(--gray-3); margin-top:.3rem;">Economia de 45%</div>
+                <div id="calc-year" style="font-size:.75rem; font-weight:600; color:var(--blue); margin-top:.4rem;">R$ 5.244,75 por ano</div>
+              </div>
+              <div style="background:linear-gradient(135deg, rgba(22,163,74,0.08), rgba(34,197,94,0.06)); border-radius:var(--radius-sm); padding:1.2rem; text-align:center;">
+                <div style="font-size:.72rem; font-weight:600; color:var(--gray-4); letter-spacing:.08em; text-transform:uppercase; margin-bottom:.4rem;">Economia Parceiro Flex vs Gasolina</div>
+                <div id="calc-save-flex" style="font-size:1.8rem; font-weight:700; color:#16A34A; letter-spacing:-.03em;">R$ 479,06</div>
+                <div id="calc-pct-flex" style="font-size:.8rem; color:var(--gray-3); margin-top:.3rem;">Economia de 49%</div>
+                <div id="calc-year-flex" style="font-size:.75rem; font-weight:600; color:#16A34A; margin-top:.4rem;">R$ 5.748,75 por ano</div>
+              </div>
             </div>
 
             <p style="font-size:.68rem; color:var(--gray-4); text-align:center; margin-top:1rem;">
-              * Valores médios: gasolina R$ 6,50/l (10 km/l) · elétrico 60 kWh bateria, 320 km autonomia (~5,3 km/kWh) · tarifa Flex Charge R$ 1,90/kWh
+              * Valores médios: gasolina R$ 6,50/l (10 km/l) · elétrico 60 kWh bateria, 320 km autonomia (~5,3 km/kWh) · tarifa Flex Charge R$ 1,90/kWh · tarifa Parceiro Flex R$ 1,75/kWh
             </p>
           </div>
         </div>
@@ -1203,16 +1228,23 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
       function calcEconomia(){
         var km = parseFloat(document.getElementById('calc-km').value) || 0;
         var gasPrice = 6.50, gasKmL = 10;
-        var elecKmKwh = 320/60, elecPriceKwh = 1.90;
+        var elecKmKwh = 320/60, elecPriceKwh = 1.90, flexPriceKwh = 1.75;
         var gasTotal = (km / gasKmL) * gasPrice;
         var elecTotal = (km / elecKmKwh) * elecPriceKwh;
+        var flexTotal = (km / elecKmKwh) * flexPriceKwh;
         var save = gasTotal - elecTotal;
+        var saveFlex = gasTotal - flexTotal;
         var pct = gasTotal > 0 ? ((save / gasTotal) * 100).toFixed(0) : 0;
+        var pctFlex = gasTotal > 0 ? ((saveFlex / gasTotal) * 100).toFixed(0) : 0;
         document.getElementById('calc-gas').textContent = 'R$ ' + gasTotal.toFixed(2).replace('.',',');
         document.getElementById('calc-elec').textContent = 'R$ ' + elecTotal.toFixed(2).replace('.',',');
+        document.getElementById('calc-flex').textContent = 'R$ ' + flexTotal.toFixed(2).replace('.',',');
         document.getElementById('calc-save').textContent = 'R$ ' + save.toFixed(2).replace('.',',');
-        document.getElementById('calc-pct').textContent = 'Você economiza ' + pct + '% com elétrico';
+        document.getElementById('calc-pct').textContent = 'Economia de ' + pct + '%';
         document.getElementById('calc-year').textContent = 'R$ ' + (save * 12).toFixed(2).replace('.',',') + ' por ano';
+        document.getElementById('calc-save-flex').textContent = 'R$ ' + saveFlex.toFixed(2).replace('.',',');
+        document.getElementById('calc-pct-flex').textContent = 'Economia de ' + pctFlex + '%';
+        document.getElementById('calc-year-flex').textContent = 'R$ ' + (saveFlex * 12).toFixed(2).replace('.',',') + ' por ano';
       }
       </script>
 
@@ -1469,6 +1501,9 @@ function goTo(id) {
   // Footer style for Cursos page - simple class toggle
   var ft = document.querySelector('footer');
   if (id === 'cursos') { ft.classList.add('cursos-theme'); } else { ft.classList.remove('cursos-theme'); }
+
+  // Reinicia os contadores ao abrir a Home
+  if (id === 'home') { runCounters(); }
 }
 
 // ── Scroll reveal ──
@@ -1505,11 +1540,19 @@ function animateCounter(el) {
   requestAnimationFrame(update);
 }
 
-// Observe counters — fire once when strip enters viewport
+// Reinicia e anima todos os contadores da home
+function runCounters() {
+  document.querySelectorAll('.metric-strip .counter').forEach(function(el){
+    el.textContent = '0';
+    animateCounter(el);
+  });
+}
+
+// Dispara os contadores quando a faixa entra na viewport (carga inicial)
 const counterObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.counter').forEach(animateCounter);
+      runCounters();
       counterObserver.unobserve(entry.target);
     }
   });
