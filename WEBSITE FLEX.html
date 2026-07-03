@@ -654,8 +654,13 @@ footer {
 .footer-copy { font-size: .77rem; color: var(--gray-4); }
 
 /* ─── RESPONSIVE ─── */
+
+/* Impede overflow horizontal em qualquer elemento largo (imagens, iframes, tabelas) */
+img, svg, video, iframe, canvas { max-width: 100%; }
+
+/* ===== TABLET / ≤960px ===== */
 @media(max-width: 960px) {
-  .hero-content { grid-template-columns: 1fr; }
+  .hero-content { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-glass-card { display: none; }
   .hero-anim-mobile { display: block !important; }
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -666,61 +671,78 @@ footer {
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
   .form-row { grid-template-columns: 1fr; }
+
+  /* Grids inline → colapsam de forma robusta (com ou sem espaço após ':') */
+  [style*="grid-template-columns:repeat(2"],
+  [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns:repeat(3"],
+  [style*="grid-template-columns: repeat(3"],
+  [style*="grid-template-columns:repeat(4"],
+  [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Footer (1.6fr 1fr 1fr 1fr) → 2 colunas no tablet */
+  [style*="grid-template-columns:1.6fr"],
+  [style*="grid-template-columns: 1.6fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+  }
 }
+
+/* ===== PHONE / ≤600px ===== */
 @media(max-width: 600px) {
-  h1 { font-size: 2.4rem; }
-  .hero { padding: 4rem 5vw 3rem; }
+  html { font-size: 15px; }
+  h1 { font-size: 2.2rem; line-height: 1.1; }
+  h2 { font-size: 1.6rem !important; }
+  h3 { font-size: 1.05rem; }
+  .hero { padding: 4rem 5vw 3rem; min-height: auto; }
   .section { padding: 3.5rem 5vw; }
+
+  /* Métricas: 2 colunas confortáveis */
   .metric-grid { grid-template-columns: 1fr 1fr; }
+  .metric-item { padding: 1.4rem .8rem; }
+  .metric-item:nth-child(2n) { border-right: none; }
+
+  /* Stats do hero empilhados */
   .hero-stats { grid-template-columns: 1fr; gap: .8rem; }
-    .hero-stat { border-right: none; border-bottom: 1px solid rgba(37,99,235,0.08); padding-bottom: .8rem; }
-}
+  .hero-stat { border-right: none; border-bottom: 1px solid rgba(37,99,235,0.08); padding-bottom: .8rem; }
 
-/* ─── MOBILE RESPONSIVE FIXES ─── */
-@media(max-width: 960px) {
-  /* Car cards grid: 2 cols -> 1 col */
-  [style*="grid-template-columns:repeat(2,1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-  /* Cursos page: 3 cols -> 1 col */
-  [style*="grid-template-columns:repeat(3,1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-  /* Flex Charge info bar: 3 cols -> 1 col */
-  [style*="grid-template-columns:repeat(3,1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-}
+  /* CTAs do hero ocupam largura total */
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas > * { width: 100%; justify-content: center; text-align: center; }
 
-@media(max-width: 600px) {
-  /* Calculadora: 2 cols -> 1 col */
-  [style*="grid-template-columns: 1fr 1fr"] {
+  /* TODOS os grids inline (calculadora, resultados, footer, cards) → 1 coluna */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1.6fr"],
+  [style*="grid-template-columns: 1.6fr"] {
     grid-template-columns: 1fr !important;
   }
-  /* Tags wrap properly */
-  [style*="flex-wrap:wrap"] {
-    gap: .3rem !important;
-  }
-  /* Navbar smaller on very small screens */
+
+  /* Tarifas: permite quebra de linha quando o texto é longo */
+  [style*="justify-content:space-between"] { flex-wrap: wrap; gap: .3rem; }
+
+  /* Tags com espaçamento menor */
+  [style*="flex-wrap:wrap"] { gap: .35rem !important; }
+
+  /* Navbar compacta */
   nav { height: 70px !important; padding: 0 4vw !important; }
   .nav-logo img { height: 50px !important; }
   .page { padding-top: 76px !important; }
-  /* Cursos page padding */
-  [style*="background:var(--blue); min-height"] {
-    padding: 2.5rem 4vw !important;
-  }
-  /* Cursos logo */
-  [style*="height:140px; width:auto; margin-bottom:1.5rem"] {
-    height: 90px !important;
-  }
-  /* Headings smaller */
-  h2 { font-size: 1.6rem !important; }
-  /* Charge hero grid gap */
-  .grid-2[style*="gap:5rem"] {
-    gap: 2rem !important;
-  }
-  /* Mobile menu top position */
   .mobile-menu { top: 70px !important; }
+
+  /* Padding interno de cards/glass reduzido para caber melhor */
+  .glass[style*="padding:2rem"] { padding: 1.4rem !important; }
+
+  /* Página Cursos */
+  [style*="background:var(--blue); min-height"] { padding: 2.5rem 4vw !important; }
+  [style*="height:140px; width:auto; margin-bottom:1.5rem"] { height: 90px !important; }
+
+  /* Gaps grandes reduzidos */
+  .grid-2[style*="gap:5rem"] { gap: 2rem !important; }
+
+  /* Mapa e visual do charge com altura menor */
+  [style*="height:340px"] { height: 260px !important; }
 }
 
 /* Battery animation */
