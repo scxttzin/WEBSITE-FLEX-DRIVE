@@ -1502,6 +1502,12 @@ function goTo(id) {
   var ft = document.querySelector('footer');
   if (id === 'cursos') { ft.classList.add('cursos-theme'); } else { ft.classList.remove('cursos-theme'); }
 
+  // Canvas por página
+  var wc = document.getElementById('waveCanvas');
+  var nc = document.getElementById('netCanvas');
+  if (wc) wc.style.opacity = (id === 'home')  ? '1' : '0';
+  if (nc) nc.style.opacity = (id === 'sobre') ? '1' : '0';
+
   // Reinicia os contadores ao abrir a Home
   if (id === 'home') { runCounters(); }
 }
@@ -1638,5 +1644,141 @@ function goToMobile(id){
   document.querySelector('.hamburger').classList.remove('open');
   document.getElementById('mobileMenu').classList.remove('visible');
 }
+</script>
+
+<!-- Wave dots canvas — Home -->
+<canvas id="waveCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1;transition:opacity 0.6s ease;"></canvas>
+<!-- Network canvas — Sobre Nós -->
+<canvas id="netCanvas"  style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 0.6s ease;"></canvas>
+
+<script>
+/* ── SHARED MOUSE ── */
+var _bgMouse = { x: -9999, y: -9999 };
+var _IGNORE_TAGS = { A:1, BUTTON:1, INPUT:1, TEXTAREA:1, SELECT:1, IMG:1 };
+function _isOverContent(e) {
+  var el = document.elementFromPoint(e.clientX, e.clientY);
+  if (!el || el === document.body || el === document.documentElement) return false;
+  if (el.id === 'waveCanvas' || el.id === 'netCanvas') return false;
+  if (_IGNORE_TAGS[el.tagName]) return true;
+  var t = el.tagName;
+  return (t==='P'||t==='H1'||t==='H2'||t==='H3'||t==='H4'||t==='SPAN'||t==='LI');
+}
+window.addEventListener('mousemove', function(e) {
+  _bgMouse.x = _isOverContent(e) ? -9999 : e.clientX;
+  _bgMouse.y = _isOverContent(e) ? -9999 : e.clientY;
+});
+window.addEventListener('mouseleave', function() { _bgMouse.x = _bgMouse.y = -9999; });
+
+/* ── WAVE DOTS — HOME ── */
+(function(){
+  var canvas = document.getElementById('waveCanvas');
+  var ctx = canvas.getContext('2d');
+  var dots = [];
+  var SPACING = 30, RADIUS = 1.6, MAX_DIST = 160, MAX_OFFSET = 6;
+
+  function buildGrid() {
+    dots = [];
+    var cols = Math.ceil(canvas.width  / SPACING) + 1;
+    var rows = Math.ceil(canvas.height / SPACING) + 1;
+    for (var r = 0; r < rows; r++)
+      for (var c = 0; c < cols; c++)
+        dots.push({ ox: c*SPACING, oy: r*SPACING, x: c*SPACING, y: r*SPACING });
+  }
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; buildGrid(); }
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var now = Date.now() * 0.001;
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      var dx = _bgMouse.x - d.ox, dy = _bgMouse.y - d.oy;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      var tx = d.ox, ty = d.oy, alpha = 0.04, r = RADIUS;
+      if (dist < MAX_DIST) {
+        var force = Math.pow(1 - dist/MAX_DIST, 2);
+        var ang = Math.atan2(dy, dx);
+        tx = d.ox - Math.cos(ang) * MAX_OFFSET * force * 2.0;
+        ty = d.oy - Math.sin(ang) * MAX_OFFSET * force * 2.0;
+        alpha = 0.04 + force * 0.22;
+        r = RADIUS + force * 1.4;
+      }
+      alpha += Math.sin(d.ox*0.03 + now*0.7) * Math.cos(d.oy*0.03 + now*0.5) * 0.012;
+      d.x += (tx - d.x) * 0.06;
+      d.y += (ty - d.y) * 0.06;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(37,99,235,' + Math.min(Math.max(alpha, 0.02), 0.38).toFixed(3) + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(animate);
+  }
+  resize(); animate();
+})();
+
+/* ── NETWORK — SOBRE NÓS ── */
+(function(){
+  var canvas = document.getElementById('netCanvas');
+  var ctx = canvas.getContext('2d');
+  var nodes = [];
+  var CONNECT_DIST = 110, MOUSE_DIST = 180, NODE_COUNT_BASE = 55;
+
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  function buildNodes() {
+    nodes = [];
+    var count = Math.max(30, Math.min(Math.floor(NODE_COUNT_BASE*(canvas.width/1280+0.5)), 90));
+    for (var i = 0; i < count; i++)
+      nodes.push({ x:rnd(0,canvas.width), y:rnd(0,canvas.height), vx:rnd(-0.18,0.18), vy:rnd(-0.12,0.12), r:rnd(1.2,2.4), phase:rnd(0,Math.PI*2) });
+  }
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; buildNodes(); }
+  window.addEventListener('resize', resize);
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var now = Date.now() * 0.001;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if (n.x < -20) n.x = canvas.width+20;  if (n.x > canvas.width+20)  n.x = -20;
+      if (n.y < -20) n.y = canvas.height+20; if (n.y > canvas.height+20) n.y = -20;
+    }
+    for (var i = 0; i < nodes.length; i++) {
+      var a = nodes[i];
+      for (var j = i+1; j < nodes.length; j++) {
+        var b = nodes[j];
+        var dx = a.x-b.x, dy = a.y-b.y, dist = Math.sqrt(dx*dx+dy*dy);
+        if (dist < CONNECT_DIST) {
+          var s = 1 - dist/CONNECT_DIST;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle = 'rgba(37,99,235,'+(s*0.13).toFixed(3)+')';
+          ctx.lineWidth = s*0.8; ctx.stroke();
+        }
+      }
+      var mdx = a.x-_bgMouse.x, mdy = a.y-_bgMouse.y, mdist = Math.sqrt(mdx*mdx+mdy*mdy);
+      if (mdist < MOUSE_DIST) {
+        var mf = 1-mdist/MOUSE_DIST;
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(_bgMouse.x,_bgMouse.y);
+        ctx.strokeStyle = 'rgba(37,99,235,'+(mf*0.18).toFixed(3)+')';
+        ctx.lineWidth = mf*0.7; ctx.stroke();
+      }
+      var pulse = 0.5+0.5*Math.sin(now*1.1+a.phase);
+      var ba = 0.12+pulse*0.08;
+      if (mdist < MOUSE_DIST) ba += (1-mdist/MOUSE_DIST)*0.45;
+      ctx.beginPath();
+      ctx.arc(a.x, a.y, a.r+(mdist<MOUSE_DIST?(1-mdist/MOUSE_DIST)*1.8:0), 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(37,99,235,'+Math.min(ba,0.72).toFixed(3)+')'; ctx.fill();
+      if (mdist < MOUSE_DIST*0.55) {
+        var gf = 1-mdist/(MOUSE_DIST*0.55);
+        var grad = ctx.createRadialGradient(a.x,a.y,0,a.x,a.y,12*gf);
+        grad.addColorStop(0,'rgba(37,99,235,'+(gf*0.22).toFixed(3)+')');
+        grad.addColorStop(1,'rgba(37,99,235,0)');
+        ctx.beginPath(); ctx.arc(a.x,a.y,12*gf,0,Math.PI*2);
+        ctx.fillStyle = grad; ctx.fill();
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  resize(); animate();
+})();
 </script>
 </body>
