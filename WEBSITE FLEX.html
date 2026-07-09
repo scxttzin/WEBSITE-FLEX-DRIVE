@@ -996,7 +996,8 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
     <li><button id="tab-home"    onclick="goTo('home')"    class="active">Home</button></li>
     <li><button id="tab-alugue"  onclick="goTo('alugue')"              >Flex Drive</button></li>
     <li><button id="tab-charge"  onclick="goTo('charge')"              >Flex Charge</button></li>
-    <li><button id="tab-cursos"  onclick="goTo('cursos')"              >Cursos</button></li>
+    <!-- Cursos oculto por enquanto -->
+    <!-- <li><button id="tab-cursos"  onclick="goTo('cursos')"              >Cursos</button></li> -->
     <li><button id="tab-sobre"   onclick="goTo('sobre')"               >Sobre Nós</button></li>
   </ul>
 
@@ -1010,7 +1011,8 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
     <button onclick="goToMobile('home')">Home</button>
     <button onclick="goToMobile('alugue')">Flex Drive</button>
     <button onclick="goToMobile('charge')">Flex Charge</button>
-    <button onclick="goToMobile('cursos')">Cursos</button>
+    <!-- Cursos oculto por enquanto -->
+    <!-- <button onclick="goToMobile('cursos')">Cursos</button> -->
     <button onclick="goToMobile('sobre')">Sobre Nós</button>
     <button class="mobile-cta" onclick="window.open('https://scxttzin.github.io/APP-FLEX-DRIVE/','_blank','noopener')">Fazer Login no app</button>
   </div>
@@ -1113,9 +1115,9 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
       <div class="glass" style="padding:3.5rem; text-align:center; background:rgba(37,99,235,0.88); backdrop-filter:var(--glass-blur); border:1px solid rgba(79,142,247,0.4); box-shadow:0 8px 40px rgba(37,99,235,0.25);">
         <div style="position:relative;z-index:1;">
           <h2 style="color:#fff; margin-bottom:.8rem;">A Revolução Energética Chegou</h2>
-          <p class="body-lg" style="color:rgba(255,255,255,0.75); margin-bottom:2rem; max-width:40ch; margin-left:auto; margin-right:auto;">Em breve, nosso lançamento sobre como fazer a implantação do seu eletroposto com o método Flex.</p>
-          <button class="btn" style="background:rgba(255,255,255,0.18); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.4); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 16px rgba(0,0,0,0.12);" onclick="goTo('cursos')">
-            Começar agora →
+          <p class="body-lg" style="color:rgba(255,255,255,0.75); margin-bottom:2rem; max-width:46ch; margin-left:auto; margin-right:auto;">Em breve, nosso lançamento sobre como fazer a implantação de maneira correta do seu primeiro eletroposto, com o método Flex. Por enquanto confira nossa frota.</p>
+          <button class="btn" style="background:rgba(255,255,255,0.18); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(255,255,255,0.4); color:#fff; box-shadow:inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 16px rgba(0,0,0,0.12);" onclick="goTo('alugue')">
+            Ver Veículos →
           </button>
         </div>
       </div>
@@ -1335,16 +1337,16 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
               <div style="font-size:.72rem; font-weight:600; color:var(--gray-4); letter-spacing:.1em; text-transform:uppercase; margin-bottom:1rem;">Tarifas</div>
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:.6rem;">
                 <span class="body-sm" style="display:inline-flex;align-items:center;gap:.4rem;"><span class="ico" data-icon="globe" style="color:var(--gray-3);font-size:1rem;"></span>Público geral</span>
-                <span style="font-size:1rem; font-weight:600; color:var(--gray-1); letter-spacing:-.02em;">R$ 1,90<span style="font-size:.75rem; color:var(--gray-4); font-weight:400;">/kWh</span></span>
+                <span style="font-size:1rem; font-weight:600; color:var(--gray-1); letter-spacing:-.02em;">---</span>
               </div>
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <span class="body-sm" style="display:inline-flex;align-items:center;gap:.4rem;"><span class="ico" data-icon="bolt" style="color:var(--blue);font-size:1rem;"></span>Motoristas Flex Drive ou Parceiros</span>
-                <span style="font-size:1rem; font-weight:600; color:var(--blue); letter-spacing:-.02em;">R$ 1,75<span style="font-size:.75rem; color:var(--gray-4); font-weight:400;">/kWh</span></span>
+                <span style="font-size:1rem; font-weight:600; color:var(--blue); letter-spacing:-.02em;">---</span>
               </div>
             </div>
             <div style="padding:.9rem 1.6rem; position:relative;z-index:1;">
               <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
-                <div class="tag" style="background:rgba(22,163,74,0.1); color:#16A34A; border-color:rgba(22,163,74,0.2);">Estações Operando</div>
+                <div class="tag" style="background:rgba(220,38,38,0.1); color:#DC2626; border-color:rgba(220,38,38,0.2);">Estações Inativas</div>
                 <div class="tag">CCS2</div>
                 <div class="tag">DC Rápido</div>
                 <div class="tag">24Hrs</div>
@@ -1357,7 +1359,7 @@ footer.cursos-theme .ft-bottom-link:hover { color: #1d4ed8 !important; }
           </div>
 
           <div style="margin-top:1.5rem; text-align:center;">
-            <a href="#page-charge" onclick="document.getElementById('page-charge').querySelector('.reveal:last-of-type').scrollIntoView({behavior:'smooth'})" style="display:inline-block; padding:.85rem 2rem; background:var(--blue); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(37,99,235,0.8); border-radius:var(--radius-pill); color:#fff; font-family:'Inter',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; box-shadow:0 4px 16px rgba(37,99,235,0.25); transition:all .25s var(--ease-smooth);" onmouseover="this.style.background='var(--blue-light)';this.style.boxShadow='0 8px 24px rgba(37,99,235,0.35)'" onmouseout="this.style.background='var(--blue)';this.style.boxShadow='0 4px 16px rgba(37,99,235,0.25)'">Encontrar as estações Flex</a>
+            <span style="display:inline-block; padding:.85rem 2rem; background:var(--gray-4); border:1px solid var(--gray-4); border-radius:var(--radius-pill); color:#fff; font-family:'Inter',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:default; box-shadow:0 4px 16px rgba(0,0,0,0.10);">Em breve</span>
           </div>
         </div>
       </div>
